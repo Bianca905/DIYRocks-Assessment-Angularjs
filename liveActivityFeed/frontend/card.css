@@ -1,0 +1,54 @@
+.card {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    padding: 5px;
+    background-color: #fff;
+    margin-bottom: 20px;
+}
+
+.card:last-child{
+  margin-bottom: none;
+}
+
+.card .priority {
+    width: 5px;
+    margin-left: 10px;
+    border-radius: 20px;
+    background-color: orange;
+    font-size: 20px;
+}
+
+.card .priority.high {
+    background-color: red;
+}
+
+.card .priority.low {
+    background-color: grey;
+}
+
+.card .content {
+  width: 100%;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+.card .type,
+.card .createdAt {
+    height: 20px;
+    display: flex;
+}
+
+.card .message {
+    margin-top: 10px;
+    min-height: 30px;
+    display: flex;
+}
+
+.card .text {
+    margin-left: 10px;
+    white-space: nowrap;        /* 唔換行 */
+    overflow: hidden;           /* 超出範圍隱藏 */
+    text-overflow: ellipsis;    /* 用「…」代替 */
+    max-width: calc(100% - 20px)
+}

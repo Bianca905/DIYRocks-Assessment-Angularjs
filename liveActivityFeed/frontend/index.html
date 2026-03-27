@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+  <meta charset="utf-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.3/angular.min.js"></script>
+  <script src="index.js"></script>
+  <script src="card.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="card.css">
+
+</head>
+<body ng-controller="MainCtrl">
+  <div class="wrapper">
+    <div class="left">
+      <h1>Create Activity</h1>
+      <form ng-submit="onSubmit()">
+        <div class="form-group">
+          <label for="type">Type</label>
+          <input type="text" id="type" name="type" class="form-control" ng-model="type" placeholder="Type">
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea class="form-control" ng-model="message" placeholder="Message"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Priority</label>
+          <select class="form-control" ng-model="priority">
+            <option value="low">Low</option>
+            <option value="normal">Normal</option>
+            <option value="high">High</option>
+          </select>
+        </div>
+        <p ng-if="missingInformation" style="color:red;">Please fill in all the information!</p>
+        <p ng-if="fullOfHighPriorityEvents" style="color:red;">Full of high-priority events, cannot add new event.</p>
+      
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+    <div class="right">
+      <h1 style="margin-left: 20px;">Live Activity Feed</h1>
+      <h1 ng-if="events.length == 0" class="noEvents">No Activity</h1>
+      <div class="cards" ng-if="events.length > 0">
+        <div ng-repeat="e in events">
+          <card type="{{e.type}}" message="{{e.message}}" priority="{{e.priority}}" created-at="{{e.createdAt}}"></card>
+        </div>
+      </div>
+      
+    </div>
+
+  </div>
+  
+</body>
+</html>
