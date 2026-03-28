@@ -17,7 +17,6 @@ angular.module('myApp', [])
     };
 
     ws.onmessage = function(event) {
-        console.log("onmessage!!!!!!!!!!!!!!", event.data);
         const newEvent = JSON.parse(event.data);
         $scope.$apply(() => {
             if (Array.isArray(newEvent)) {
@@ -27,8 +26,6 @@ angular.module('myApp', [])
             }
             $scope.sortByPriority();
             $scope.countPriority();
-            
-
         });
     };
 
@@ -38,7 +35,7 @@ angular.module('myApp', [])
             type: $scope.type,
             message: $scope.message,
             priority: $scope.priority,
-            createdAt: Date.now() //timestamp
+            createdAt: Date.now()
         };
         $scope.missingInformation = false;
         if (!$scope.type || !$scope.message) {
@@ -51,7 +48,7 @@ angular.module('myApp', [])
     $scope.createEvent = function(event){
         $http.post($scope.env + "/createEvent", event)
         .then(function(res){
-            // console.log("Event created", res.data);
+            console.log("Event created");
         })
         .catch(function(err){
             console.log("Error creating event:", err);
@@ -60,7 +57,6 @@ angular.module('myApp', [])
 
     $scope.sortByPriority = function() {
         const priorityOrder = { high: 3, normal: 2, low: 1 };
-
         $scope.events.sort(function(a, b) {
             const diff = priorityOrder[b.priority] - priorityOrder[a.priority];
             if (diff !== 0) return diff;
@@ -83,7 +79,6 @@ angular.module('myApp', [])
 
         if (data.status === 201) {
             const newEvent = data.event;
-
             if (data.dropped) {
             const dropped = data.dropped;
             $scope.events = $scope.events.filter(e => 
@@ -91,10 +86,7 @@ angular.module('myApp', [])
             );
             $scope.fullOfHighPriorityEvents = false;
             }
-
             $scope.events.unshift(newEvent);
         }
     };
-
-
   });

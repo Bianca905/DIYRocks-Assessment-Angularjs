@@ -12,20 +12,17 @@ It includes:
 git clone https://github.com/Bianca905/DIYRocks-Assessment-Angularjs.git
 cd liveActivityFeed
 
-**Frontend**
-npm install
-ng serve
-
 **Backend**
 npm install
-npx ts-node server.ts
+node server.js
+
 
 ### Task 2 - Live Activity Feed
 
 ## 簡介
 **即時活動訊息牆**，包含：
-- **Backend (Node.Ts + Express + WebSocket)**  
-- **Frontend (AngularTS)**  
+- **Backend (Node.js + Express + WebSocket)**  
+- **Frontend (AngularJS)**  
 
 ---
 
@@ -73,8 +70,9 @@ npx ts-node server.ts
 
 ### 4. What did you intentionally leave out that you would add for production?
 - JWT 登入驗證,確保只有合法用戶可以發 event。
-- 監控 & Logging。
+- Error handling & Retry 機制。。
 - 加 backpressure handling ,Slow client handling。
+
 
 
 

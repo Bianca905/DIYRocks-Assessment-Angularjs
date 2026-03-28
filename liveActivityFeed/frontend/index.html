@@ -35,7 +35,20 @@
         </div>
         <p ng-if="missingInformation" style="color:red;">Please fill in all the information!</p>
         <p ng-if="fullOfHighPriorityEvents" style="color:red;">Full of high-priority events, cannot add new event.</p>
-      
+        <div ng-if="events.length > 0" class="count">
+          <div class="high" ng-if="highPriority > 0">
+            <div class="line" ></div>
+            High : {{highPriority}}
+          </div>
+          <div class="normal" ng-if="normalPriority > 0">
+            <div class="line"></div>
+            Normal : {{normalPriority}}
+          </div>
+          <div class="low" ng-if="lowPriority > 0">
+            <div class="line"></div>
+            Low : {{lowPriority}}
+          </div>
+        </div>
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
     </div>
@@ -49,8 +62,6 @@
       </div>
       
     </div>
-
   </div>
-  
 </body>
 </html>
